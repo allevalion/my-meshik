@@ -1,0 +1,147 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Lato", "Helvetica", "Arial", sans-serif;
+    background-image: linear-gradient(90deg, #0c71ca, #64bce2);
+    color: #333;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#game-header {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 1500;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 18px;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.menu-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.game-area {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding-top: 60px;
+}
+
+.controls {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #0055CB;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.controls:hover {
+    background-color: #0049ad;
+}
+
+.mouse {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    cursor: pointer;
+    transform: rotate(var(--rotation, 0deg)) scaleX(-1);
+}
+
+@keyframes run {
+    0% {
+        left: -60px;
+    }
+
+    100% {
+        left: 100vw;
+    }
+}
+
+@keyframes runCunning {
+    0% {
+        left: -60px;
+    }
+
+    30% {
+        left: 20vw;
+    }
+
+    40% {
+        left: 20vw;
+    }
+
+    100% {
+        left: 100vw;
+    }
+}
+
+.mouse {
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.mouse.normal,
+.mouse.bandit {
+    background-image: url('../assets/images/mouse.png');
+}
+
+.mouse.fast,
+.mouse.cunning {
+    background-image: url('../assets/images/mouse_fast.png');
+}
+
+.mouse.golden {
+    background-image: url('../assets/images/mouse_golden.png');
+}
+
+@media (max-width: 600px) {
+    #game-header {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    .controls {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    .mouse {
+        width: 40px;
+        height: 40px;
+    }
+}

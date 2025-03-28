@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Охота на мышей</title>
+    <link rel="icon" href="../../favicon.png">
+    <link rel="stylesheet" href="css/mousehunt.css">
+</head>
+
+<body>
+    <div id="start-menu" class="menu-overlay">
+        <div class="menu-content">
+            <h1>Охота на мышей</h1>
+            <p>Поймайте как можно больше мышей за 60 секунд:</p>
+            <ul>
+                <li><strong>Обычная мышь:</strong> +5 монет.</li>
+                <li><strong>Быстрая мышь:</strong> +10 монет.</li>
+                <li><strong>Хитрая мышь:</strong> +15 монет (движется с остановкой).</li>
+                <li><strong>Золотая мышь:</strong> +50 монет (редкая!).</li>
+                <li><strong>Мышь-бандит:</strong> -10 монет (осторожно!).</li>
+            </ul>
+            <p>Комбо: ловите мышей подряд без задержки, чтобы получать бонусные монеты!</p>
+            <button id="start-btn" class="controls">Начать охоту</button>
+        </div>
+    </div>
+
+    <header id="game-header">
+        <div class="score">Счет: <span id="score">0</span></div>
+        <div class="timer">Время: <span id="timer">60</span> сек.</div>
+    </header>
+
+    <div id="game-area" class="game-area"></div>
+
+    <div id="end-menu" class="menu-overlay hidden">
+        <div class="menu-content">
+            <h1>Игра окончена!</h1>
+            <p id="end-message">Ваш счет: <span id="final-score">0</span></p>
+            <button id="restart-btn" class="controls">Перезапустить игру</button>
+        </div>
+    </div>
+
+    <script src="js/mousehunt.js"></script>
+</body>
+
+</html>

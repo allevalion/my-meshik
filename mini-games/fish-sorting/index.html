@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сортировка рыбок</title>
+  <link rel="icon" href="../../favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="menu-overlay" id="start-menu">
+    <div class="menu-content">
+      <h1>Сортировка рыбок</h1>
+      <p>Отсортируйте рыбок правильно:</p>
+      <ul>
+        <li><strong>Съедобная рыбка:</strong> +5 монет.</li>
+        <li><strong>Декоративная рыбка:</strong> -5 монет, если положить в миску для съедобных.</li>
+        <li><strong>Большая рыбка:</strong> -10 монет, если положить в миску для съедобных.</li>
+        <li><strong>Рыба-бонус:</strong> +30 монет.</li>
+        <li><strong>Рыба-ловушка:</strong> -15 монет и штраф времени, если ошибётесь.</li>
+      </ul>
+      <button class="controls" id="start-button">Начать сортировку</button>
+    </div>
+  </div>
+
+  <div class="menu-overlay hidden" id="end-menu">
+    <div class="menu-content">
+      <h1 id="end-title">Игра окончена</h1>
+      <p id="final-score">Ваш счёт: 0</p>
+      <p id="end-message"></p>
+      <button class="controls" id="restart-button">Играть снова</button>
+    </div>
+  </div>
+
+  <div id="game-header">
+    <div>Время:&nbsp;<span id="timer">60</span>&nbsp;сек</div>
+    <div>Счёт:&nbsp;<span id="score">0</span></div>
+  </div>
+
+  <div class="game-area" id="game-area">
+    <div id="bowl-edible" class="bowl" data-type="edible">Съедобное</div>
+    <div id="bowl-nonedible" class="bowl" data-type="nonedible">Несъедобное</div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

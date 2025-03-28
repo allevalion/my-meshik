@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История обновлений | Мой Мэшик</title>
+    <link rel="icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Lato", sans-serif;
+            background-image: linear-gradient(90deg, #0c71ca, #64bce2);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-top: 160px;
+            padding-bottom: 20px;
+        }
+
+        .updates-container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .update-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #2b3858;
+            color: #fff;
+            text-align: center;
+            padding: 15px 20px;
+            margin-top: auto;
+        }
+
+        .update-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .update-version {
+            font-weight: bold;
+            color: #0055CB;
+            font-size: 18px;
+        }
+
+        .update-date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .update-content ul {
+            padding-left: 20px;
+        }
+
+        .update-content li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            color: #000;
+            padding: 5px 45px;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .header-left,
+        .header-center,
+        .header-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-center {
+            justify-content: center;
+        }
+
+        .header-right {
+            justify-content: flex-end;
+        }
+
+        .back-btn {
+            font-size: large;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            color: #0055CB;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 85, 203, 0.1);
+        }
+
+        .back-btn svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .version-badge {
+            font-size: large;
+            height: 24px;
+            background: linear-gradient(135deg, #ff8a00, #e52e71);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 8px 20px;
+            white-space: nowrap;
+            animation: none;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .version-badge.pulse-active {
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                margin-top: 120px;
+            }
+
+            .updates-container {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin-top: 160px;
+            }
+
+            .update-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .version-badge {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 8px 10px;
+            }
+
+            .content-wrapper {
+                margin-top: 140px;
+            }
+
+            .update-card {
+                padding: 15px;
+            }
+
+            .back-btn .back-text {
+                display: none;
+            }
+
+            .back-btn svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .header-center h1 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .content-wrapper {
+                margin-top: 130px;
+            }
+
+            .update-card {
+                padding: 12px;
+            }
+
+            .update-version {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <button class="back-btn" onclick="location.href='index.html'">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#0055CB" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span class="back-text">На главную</span>
+            </button>
+        </div>
+        <div class="header-center">
+            <h1>Мой Мэшик</h1>
+        </div>
+        <div class="header-right">
+            <div class="version-badge" id="versionBadge" onclick="togglePulse()">Бета-версия</div>
+        </div>
+    </header>
+    <div class="content-wrapper">
+        <div class="updates-container">
+
+
+            <div class="update-card">
+                <div class="update-header">
+                    <span class="update-version">Версия 1.0.0-beta</span>
+                    <span class="update-date">31 марта 2025</span>
+                </div>
+                <div class="update-content">
+                    <p>
+                        <strong>Ура! Перед вами самая первая бета-версия "Моего Мэшика"!</strong><br><br>
+                        В игре уже есть основные функции: кормление, магазин и мини-игры,<br>
+                        но это только начало большого пути!<br><br>
+                        В ближайших обновлениях вас ждут:<br>
+                        - Новые виды еды и предметы для кота<br>
+                        - Увлекательные достижения и коллекции<br>
+                        - Дополнительные мини-игры с наградами<br>
+                        - Улучшенная графика и анимации<br><br>
+                        Мы будем рады вашим отзывам и идеям - вместе сделаем игру лучше!<br>
+                        Следите за обновлениями!
+                    </p>
+                </div>
+            </div>
+
+            <!-- <div class="update-card">
+                <div class="update-header">
+                    <span class="update-version">Версия 0.0.0</span>
+                    <span class="update-date">1 января 1970 года</span>
+                </div>
+                <div class="update-content">
+                    <h3>Основные изменения:</h3>
+                    <ul>
+                        <li>Изменение 1</li>
+                        <li>Хватит копаться в коде!</li>
+                        <li>Передаю привет Дралупу!</li>
+                        <li>Мэшик легенда.</li>
+                    </ul>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+
+    <footer>
+        &copy 2025 alleva. Все права защищены.
+        <a href="https://github.com/allevalion/my-meshik" target="_blank" style="color: #1e90ff;">GitHub</a> |
+        <a href="https://t.me/llukyanov" target="_blank" style="color: #1e90ff;">Telegram</a>
+    </footer>
+
+    <script>
+        function togglePulse() {
+            const badge = document.getElementById('versionBadge');
+            badge.classList.toggle('pulse-active');
+        }
+    </script>
+</body>
+
+</html>

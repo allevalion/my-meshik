@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой Мэшик</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="header-left">
+      <div class="hamburger-menu">
+        <label class="burger" for="burger">
+          <input type="checkbox" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="achievements-menu" id="achievementsMenu">
+          <h3>Достижения</h3>
+          <li class="placeholder-achievement">
+            <img src="assets/images/placeholder.png" alt="Скоро будет">
+            <div>
+              <strong>Скоро будет</strong>
+              <p>Достижения пока в разработке!</p>
+            </div>
+          </li>
+          <ul id="achievementsList">
+          </ul>
+        </div>
+      </div>
+      <div class="beta-badge" data-text="Бета-версия">
+        <span class="beta-letter">β</span>
+        <span class="beta-text">Бета-версия</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="coins-display">
+        <span id="headerCoinCount">0</span>
+        <span class="coin-icon"></span>
+      </div>
+      <button id="shopBtn" class="shop-btn">
+        Магазин
+        <svg class="cartIcon" viewBox="0 0 576 512">
+          <path
+            d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+          </path>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <div class="game-container">
+    <div class="cat-container">
+      <img id="catImage" src="assets/images/meshik-happy.png" alt="Мэшик">
+    </div>
+    <div class="food-selection">
+      <button class="food-btn" data-food="fish"><img src="assets/images/food-fish.png" alt="Рыба"></button>
+      <button class="food-btn" data-food="milk"><img src="assets/images/food-milk.png" alt="Молоко"></button>
+      <button class="food-btn" data-food="treat"><img src="assets/images/food-treat.png" alt="Лакомство"></button>
+    </div>
+    <div class="controls">
+      <button id="helpBtn">Инструкция</button>
+      <button id="resetBtn">Сбросить прогресс</button>
+      <button id="shareBtn">Поделиться</button>
+    </div>
+    <div class="status">
+      <div class="gauge">
+        <div class="gauge-fill" id="satietyGauge"></div>
+      </div>
+      <p>Уровень сытости</p>
+    </div>
+    <div class="achievement-card-container" id="achievementCardContainer"></div>
+  </div>
+  <div id="shopModal" class="shop-modal">
+    <div class="shop-content">
+      <div class="shop-header">
+        <h2>Магазин</h2>
+        <div class="shop-notice">Функциональность находится в разработке!</div>
+        <div class="shop-controls">
+          <div class="shop-coins">
+            <span class="coin-icon"></span>
+            <span id="coinCount"></span>
+          </div>
+          <button id="closeShopBtn" class="close-shop">✕</button>
+        </div>
+      </div>
+      <div class="shop-items"></div>
+      <h3 style="padding: 0 20px;">Инвентарь</h3>
+      <div class="inventory"></div>
+    </div>
+  </div>
+  <div id="furnitureContainer"></div>
+  <div class="mini-game-buttons">
+    <button id="huntGameBtn">Охота на мышей</button>
+    <button id="sortGameBtn">Сортировка рыбок</button>
+  </div>
+
+  <div id="helpModal" class="shop-modal">
+    <div class="shop-content">
+      <div class="shop-header">
+        <h2>Инструкция</h2>
+        <button id="closeHelpBtn" class="close-shop">✕</button>
+      </div>
+      <div style="padding: 20px;">
+        <h3>Как играть:</h3>
+        <p>1. Покупайте еду в магазине или используйте доступную на главном экране (за монеты)</p>
+        <p>2. Кормите Мэшика, чтобы поддерживать уровень сытости</p>
+        <p>3. Уровень сытости уменьшается со временем</p>
+        <p>4. Играйте в мини-игры, чтобы заработать больше монет</p>
+        <!-- <p>5. Открывайте достижения за различные действия</p> -->
+      </div>
+    </div>
+  </div>
+  <footer>
+    &copy 2025 alleva. Все права защищены.
+    <a href="https://github.com/allevalion/my-meshik" target="_blank" style="color: #1e90ff;">GitHub</a> |
+    <a href="https://t.me/llukyanov" target="_blank" style="color: #1e90ff;">Telegram</a>
+    <br>
+    <span style="color: grey; cursor: pointer;" onclick="location.href='updates.html'">Версия 1.0.0-beta</span>
+  </footer>
+
+  <script src="js/achievements.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/food.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+
+</html>
