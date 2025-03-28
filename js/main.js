@@ -81,14 +81,14 @@ shareBtn.addEventListener('click', async () => {
   const shareData = {
     title: 'Мой Мэшик - виртуальный питомец',
     text: 'Покорми кота Мэшика! Уровень сытости: ' + satietyLevel + '%',
-    url: 'https://allevalion.github.io/my-meshik'
+    url: 'https://allevalion.github.io/my-meshik/'
   };
   
   try {
     if (navigator.share) {
       await navigator.share(shareData);
     } else {
-      const shareLink = `https://allevalion.github.io/my-meshik`;
+      const shareLink = `https://allevalion.github.io/my-meshik/`;
       const input = document.createElement('input');
       input.value = shareLink;
       document.body.appendChild(input);
